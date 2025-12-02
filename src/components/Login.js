@@ -20,7 +20,7 @@ function Login() {
             return () => clearTimeout(timeout);
         }
     }, [showAlert]);
-    const host = 'http://localhost:4000/api/auth'
+    const host = 'https://taskmanager-backend-bnau.onrender.com/api/auth'
     let navigate = useNavigate();
     const [form, setform] = useState({ email: '', password: '' })
     const onchange = (e) => {

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { TaskContext } from "../Context/Taskstate";
 
 const Addtask = (props) => {
-  const host = "http://localhost:4000/api/tasks"
+  const host = "https://taskmanager-backend-bnau.onrender.com/api/tasks"
   const [details, setdetails] = useState({ title: '', description: '', priority: 'Medium', status: 'In-Progress' });
   const taskContext = useContext(TaskContext);
   const { tasks, setTasks, getData } = taskContext;
