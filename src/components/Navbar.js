@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { TaskContext } from '../Context/Taskstate';
 
 function Navbar() {
-    const {getData,setTasks } = useContext(TaskContext);
+    const {setTasks } = useContext(TaskContext);
     let navigate = useNavigate();
     const handlelogout = () => {
         localStorage.removeItem('token');
