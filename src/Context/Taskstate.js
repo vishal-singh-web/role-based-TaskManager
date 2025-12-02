@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from 'react'
 const TaskContext = createContext();
 function Taskstate(props) {
     const [tasks, setTasks] = useState([]);
-    const host = 'https://taskmanager-backend-bnau.onrender.com/api/tasks'
+    const host = 'https://role-based-taskmanager-backend.onrender.com/api/tasks'
     const getData = async () => {
         const url = `${host}/fetchtasks`
         const res = await fetch(url, {
