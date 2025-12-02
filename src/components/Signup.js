@@ -10,7 +10,7 @@ function Signup() {
         setShowAlert(true);
         settype(condition);
     }
-    const host = 'https://taskmanager-backend-bnau.onrender.com/api/auth'
+    const host = 'https://role-based-taskmanager-backend.onrender.com/api/auth'
     let navigate = useNavigate();
     const [form, setform] = useState({ name: '', email: '', password: '' })
     const onchange = (e) => {

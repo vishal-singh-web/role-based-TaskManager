@@ -13,7 +13,7 @@ function Taskitem(props) {
 
     const taskContext = useContext(TaskContext);
     const { tasks, setTasks } = taskContext;
-    const host = 'https://taskmanager-backend-bnau.onrender.com/api/tasks'
+    const host = 'https://role-based-taskmanager-backend.onrender.com/api/tasks'
     const handledelete = async () => {
         try {
             const url = `${host}/deletetask/${_id}`;
