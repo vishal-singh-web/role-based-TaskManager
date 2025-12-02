@@ -1,0 +1,6 @@
+.custom-alert {
+  position: fixed;
+  top: 4rem;
+  right: 1rem;
+  z-index: 1055; 
+}
