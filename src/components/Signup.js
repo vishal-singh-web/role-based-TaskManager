@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { TaskContext } from '../Context/Taskstate';
 
 function Signup() {
+    const taskContext = useContext(TaskContext);
+    const { getData, getUser } = taskContext;
     const [msg, setMsg] = useState('');
     const [showAlert, setShowAlert] = useState(false);
     const [type, settype] = useState('success');
@@ -32,6 +35,8 @@ function Signup() {
                 localStorage.setItem('token', data.authtoken);
                 alert('Registration Successful', 'success');
                 setTimeout(() => {
+                    getUser();
+                    getData();
                     navigate('/');
                 }, 2000);
             }

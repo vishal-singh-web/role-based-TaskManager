@@ -4,7 +4,7 @@ import { TaskContext } from '../Context/Taskstate';
 
 function Login() {
     const taskContext = useContext(TaskContext);
-    const { getData } = taskContext;
+    const { getData, getUser } = taskContext;
     const [msg, setMsg] = useState('');
     const [showAlert, setShowAlert] = useState(false);
     const [type, settype] = useState('success');
@@ -43,6 +43,7 @@ function Login() {
                 localStorage.setItem('token', data.authtoken);
                 alert('Successfully Logged in', 'success');
                 setTimeout(() => {
+                    getUser();
                     getData();
                     navigate('/');
                 }, 2000);

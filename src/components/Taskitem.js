@@ -16,6 +16,7 @@ function Taskitem(props) {
     const host = 'https://role-based-taskmanager-backend.onrender.com/api/tasks'
     const handledelete = async () => {
         try {
+            setTasks(tasks.filter((ele) => ele._id !== _id));
             const url = `${host}/deletetask/${_id}`;
             const res = await fetch(url, {
                 method: "DELETE",
@@ -30,7 +31,6 @@ function Taskitem(props) {
                 alert("Task deletion failed, Please try again.", "danger");
                 return;
             }
-            setTasks(tasks.filter((ele) => ele._id !== _id));
             alert("Task deleted Successfully.", "success");
 
         } catch (err) {
@@ -46,6 +46,8 @@ function Taskitem(props) {
     }
     const savetask = async () => {
         try {
+            alert("Task edited Successfully.", "success");
+            refClose.current.click();
             const url = `${host}/updatetask/${_id}`;
             const res = await fetch(url, {
                 method: "PUT",
@@ -60,14 +62,10 @@ function Taskitem(props) {
                 console.log("update failed, status:", res.status);
                 return;
             }
-
             const updated = await res.json();
-
             setTasks(
                 tasks.map((t) => (t._id === _id ? updated : t))
             );
-            alert("Task edited Successfully.", "success");
-            refClose.current.click();
         } catch (err) {
             console.error("update error:", err);
             alert("Task edit failed, please try again.", "danger");
