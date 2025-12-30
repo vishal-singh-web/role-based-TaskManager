@@ -11,6 +11,15 @@ function Home() {
     if (!localStorage.getItem('token')) {
       navigate('/login');
     }
+    const handleStorageChange = (event) => {
+      if (event.key === "token") {
+        window.location.reload();
+      }
+    };
+    window.addEventListener("storage", handleStorageChange);
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, []);
   const [msg, setMsg] = useState("");
   const [showAlert, setShowAlert] = useState(false);

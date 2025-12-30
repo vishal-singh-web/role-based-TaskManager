@@ -3,6 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { TaskContext } from '../Context/Taskstate';
 
 function Login() {
+    let navigate = useNavigate();
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+          navigate('/');
+        }
+        const handleStorageChange = (event) => {
+          if (event.key === "token") {
+            window.location.reload();
+          }
+        };
+        window.addEventListener("storage", handleStorageChange);
+        return () => {
+          window.removeEventListener("storage", handleStorageChange);
+        };
+      }, []);
     const taskContext = useContext(TaskContext);
     const { getData, getUser } = taskContext;
     const [msg, setMsg] = useState('');
@@ -15,13 +30,11 @@ function Login() {
     }
     useEffect(() => {
         if (showAlert) {
-            console.log("Alert called with message:", msg);
             const timeout = setTimeout(() => setShowAlert(false), 2000);
             return () => clearTimeout(timeout);
         }
     }, [showAlert]);
     const host = 'https://role-based-taskmanager-backend.onrender.com/api/auth'
-    let navigate = useNavigate();
     const [form, setform] = useState({ email: '', password: '' })
     const onchange = (e) => {
         setform({ ...form, [e.target.name]: e.target.value })
